@@ -1,6 +1,6 @@
 import React from "react";
 
-const AllPuppies = (props) => {
+const AllPuppies = (props, getSinglePlayer) => {
   console.log('All Puppies props:', props);
   return (
     <>

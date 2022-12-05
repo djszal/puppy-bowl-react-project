@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import AllPuppies from "./AllPuppies";
 import SinglePuppy from "./SinglePuppy";
-import {getPlayers} from "../api/api";
+import {getPlayers, getSinglePlayer} from "../api/api";
 import NavBar from "./NavBar"
 
 // const puppies = [
@@ -124,7 +124,8 @@ const Main = () => {
     // console.log(useState([]));
     //   useState is currently taking the array '[]' and passing it to 'players'
     // I think 'useState' could be rewritten as: const useState = ([]) => {setPlayers(players);}; 
-    const [players, setPlayers] = useState([])
+    const [players, setPlayers] = useState([]);
+    const [selectedPlayers, setSelectedPlayers] = useState({});
 
     // API call below
     // const getPlayers = async () => {
@@ -148,12 +149,13 @@ const Main = () => {
     // setPlayers will come back with data from the API call and 'players' gets linked with this data. 
 
     // console.log(players);
+    console.log('selected players data ', selectedPlayers);
   
   
     return (
     <div>
       <NavBar />
-      <AllPuppies allPuppies={players}/>
+      <AllPuppies allPuppies={players} getSinglePlayer={getSinglePlayer}/>
       <SinglePuppy pup={players}/>
       {/* <AllPuppies puppy={puppies[0]} />
       <SinglePuppy pup={puppies[0]} /> */}
