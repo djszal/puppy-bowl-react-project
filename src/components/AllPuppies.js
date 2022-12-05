@@ -1,7 +1,7 @@
 import React from "react";
 
-const AllPuppies = (props, getSinglePlayer) => {
-  console.log('All Puppies props:', props);
+const AllPuppies = (props, getSinglePlayer, setSelectedPlayer) => {
+  // console.log('All Puppies props:', props);
   return (
     <>
     {props.allPuppies.map((puppy) => {
@@ -14,7 +14,8 @@ const AllPuppies = (props, getSinglePlayer) => {
             <p className="pup-number">#{puppy.id}</p>
           </div>
           <img src={puppy.imageUrl} alt= "photo" /> 
-          <button className="detail-button" data-id={puppy.id}>See details</button>
+          <button className="detail-button" data-id={puppy.id} onClick={() => getSinglePlayer(setSelectedPlayer, puppy.id)}>See details</button>
+          {/* Can't get the button to work. says getSinglePlayer is not a function in the console.  */}
           <button className="delete-button" data-id={puppy.id}>Remove from roster</button>
         </div>  
         );

@@ -125,21 +125,8 @@ const Main = () => {
     //   useState is currently taking the array '[]' and passing it to 'players'
     // I think 'useState' could be rewritten as: const useState = ([]) => {setPlayers(players);}; 
     const [players, setPlayers] = useState([]);
-    const [selectedPlayers, setSelectedPlayers] = useState({});
+    const [selectedPlayers, setSelectedPlayer] = useState({});
 
-    // API call below
-    // const getPlayers = async () => {
-    //     try {
-    //         const response = await fetch('https://fsa-puppy-bowl.herokuapp.com/api/2211-ftb-et-web-ft/players');
-    //         const data = await response.json();
-    //         console.log(data);
-    //         setPlayers(data.data.players);
-    //         // Above is taking the data we pull from the API and using 'data' as an argument in 'setPlayers' and passing the data to the 'players' parameter above in 'useState'
-    //         // data.player allows us to return 'data' as the actual array of players and not the other objects that are in the api. It only pulls the 'data' and 'players' object (which holds the array)
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
 
     useEffect(() => {
         getPlayers(setPlayers);
@@ -150,13 +137,14 @@ const Main = () => {
 
     // console.log(players);
     console.log('selected players data ', selectedPlayers);
+    //not getting any data pulled form the API for some reason 
   
   
     return (
     <div>
       <NavBar />
-      <AllPuppies allPuppies={players} getSinglePlayer={getSinglePlayer}/>
-      <SinglePuppy pup={players}/>
+      <AllPuppies allPuppies={players} getSinglePlayer={getSinglePlayer} setSelectedPlayer={setSelectedPlayer}/>
+      <SinglePuppy selectedPlayers={selectedPlayers}/>
       {/* <AllPuppies puppy={puppies[0]} />
       <SinglePuppy pup={puppies[0]} /> */}
     </div>
